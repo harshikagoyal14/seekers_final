@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+/* Seekers Design System — Peacock palette */
+:root {
+  /* Brand colours */
+  --brand:   #0B5D63;
+  --deep:    #083F43;
+  --ink:     #15201E;
+  --canvas:  #F6F7F5;
+  --ink-2:   #4F5B59;
+
+  /* Status colours (same across all palettes) */
+  --status-pending-bg:   #FDF1DC;
+  --status-pending-text: #8A4B00;
+  --status-progress-bg:  #E5EDF8;
+  --status-progress-text:#1D4F91;
+  --status-won-bg:       #E3F2E8;
+  --status-won-text:     #17663A;
+  --status-lost-bg:      #ECEFED;
+  --status-lost-text:    #4F5B59;
+  --status-dispute-bg:   #FBE9E6;
+  --status-dispute-text: #A52A1C;
+
+  /* Spacing base 4px */
+  --radius-sm:  8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  /* Focus */
+  --focus-ring: 3px solid #0B5D63;
+}
+
+@theme inline {
+  --color-brand:  var(--brand);
+  --color-deep:   var(--deep);
+  --color-ink:    var(--ink);
+  --color-canvas: var(--canvas);
+}
+
+/* Fonts */
+@font-face {
+  font-family: 'Anek Latin';
+  src: url('https://fonts.gstatic.com/s/aneklatin/v5/co3WmWZulTRoU4a8dqrWiajBS5hhqkFuVzA.woff2') format('woff2');
+  font-display: swap;
+  unicode-range: U+20B9; /* ₹ only */
+}
+
+body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: 'Hanken Grotesk', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Touch targets: minimum 44px */
+button, a, [role="button"] {
+  min-height: 44px;
+}
+
+/* Focus visible */
+*:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 2px;
+}
