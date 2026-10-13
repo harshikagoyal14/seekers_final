@@ -8,14 +8,14 @@ export async function resolveActor(): Promise<Profile> {
   const { data: { user }, error: authError } = await supabase.auth.getUser();
   if (authError || !user) redirect("/auth/sign-in");
 
-  const { data: profile, error } = await supabase
+  const { data, error } = await supabase
     .from("profiles")
     .select("*")
     .eq("user_id", user.id)
     .single();
 
-  if (error || !profile) redirect("/auth/sign-in");
-  return profile as Profile;
+  if (error || !data) redirect("/auth/sign-in");
+  return data as unknown as Profile;
 }
 
 export async function requireAdmin(): Promise<Profile> {

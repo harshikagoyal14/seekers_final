@@ -5,11 +5,12 @@ export default async function HomePage() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
-  const { data: profile } = await supabase
+  const { data: profileRow } = await supabase
     .from("profiles")
     .select("name, grandfathered, created_at")
     .eq("user_id", user!.id)
     .single();
+  const profile = profileRow as { name: string; grandfathered: boolean; created_at: string } | null;
 
   const hour = new Date().getHours();
   const greeting = hour < 12 ? "Good morning" : hour < 17 ? "Good afternoon" : "Good evening";
