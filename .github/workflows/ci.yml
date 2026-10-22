@@ -33,4 +33,4 @@ jobs:
         run: npx tsc --noEmit
 
       - name: ESLint
-        run: npx next lint --dir src
+        run: npx next lint src
