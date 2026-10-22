@@ -2,14 +2,14 @@
 
 /* Seekers Design System — Peacock palette */
 :root {
-  /* Brand colours */
   --brand:   #0B5D63;
   --deep:    #083F43;
   --ink:     #15201E;
-  --canvas:  #F6F7F5;
+  --canvas:  #F0F2F0;
   --ink-2:   #4F5B59;
+  --surface: #FFFFFF;
+  --border:  #E2E6E5;
 
-  /* Status colours (same across all palettes) */
   --status-pending-bg:   #FDF1DC;
   --status-pending-text: #8A4B00;
   --status-progress-bg:  #E5EDF8;
@@ -21,46 +21,84 @@
   --status-dispute-bg:   #FBE9E6;
   --status-dispute-text: #A52A1C;
 
-  /* Spacing base 4px */
   --radius-sm:  8px;
   --radius-md: 12px;
   --radius-lg: 16px;
+  --radius-xl: 20px;
 
-  /* Focus */
-  --focus-ring: 3px solid #0B5D63;
+  --shadow-sm: 0 1px 3px 0 rgba(8,63,67,.06), 0 1px 2px -1px rgba(8,63,67,.04);
+  --shadow-md: 0 4px 12px -2px rgba(8,63,67,.10), 0 2px 6px -2px rgba(8,63,67,.06);
+  --shadow-lg: 0 8px 24px -4px rgba(8,63,67,.12), 0 4px 10px -4px rgba(8,63,67,.08);
+
+  --focus-ring: 3px solid rgba(11,93,99,.45);
 }
 
 @theme inline {
-  --color-brand:  var(--brand);
-  --color-deep:   var(--deep);
-  --color-ink:    var(--ink);
-  --color-canvas: var(--canvas);
+  --color-brand:   var(--brand);
+  --color-deep:    var(--deep);
+  --color-ink:     var(--ink);
+  --color-canvas:  var(--canvas);
+  --color-surface: var(--surface);
 }
 
-/* Fonts */
+/* ₹ glyph only */
 @font-face {
   font-family: 'Anek Latin';
   src: url('https://fonts.gstatic.com/s/aneklatin/v5/co3WmWZulTRoU4a8dqrWiajBS5hhqkFuVzA.woff2') format('woff2');
   font-display: swap;
-  unicode-range: U+20B9; /* ₹ only */
+  unicode-range: U+20B9;
 }
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
 
 body {
   background: var(--canvas);
   color: var(--ink);
-  font-family: 'Hanken Grotesk', system-ui, sans-serif;
+  font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Touch targets: minimum 44px */
-button, a, [role="button"] {
+/* Minimum touch targets */
+button, [role="button"] {
   min-height: 44px;
+  cursor: pointer;
 }
 
-/* Focus visible */
 *:focus-visible {
   outline: var(--focus-ring);
   outline-offset: 2px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #C5CDCB; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #9BA5A3; }
+
+/* Card utility */
+.card {
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.card-hover {
+  transition: box-shadow 150ms ease, transform 150ms ease;
+}
+.card-hover:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+/* Page header gradient */
+.page-header {
+  background: linear-gradient(135deg, #083F43 0%, #0B5D63 60%, #0E7177 100%);
 }
