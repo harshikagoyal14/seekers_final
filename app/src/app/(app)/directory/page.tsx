@@ -54,7 +54,7 @@ export default async function DirectoryPage({ searchParams }: Props) {
 
   // Fetch honour rates from view and merge
   const bizIds = (rawBiz ?? []).map(b => b.id);
-  let honourMap: Record<string, number> = {};
+  const honourMap: Record<string, number> = {};
   if (bizIds.length > 0) {
     const { data: honours } = await db
       .from("business_honour")

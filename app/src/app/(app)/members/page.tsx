@@ -82,9 +82,9 @@ export default async function MembersPage({ searchParams }: Props) {
           Search
         </button>
         {(q || industry) && (
-          <a href="/members" className="h-11 px-4 flex items-center rounded-xl border border-[#E5E7E6] text-sm text-[#4F5B59]">
+          <Link href="/members" className="h-11 px-4 flex items-center rounded-xl border border-[#E5E7E6] text-sm text-[#4F5B59]">
             Clear
-          </a>
+          </Link>
         )}
       </form>
 
